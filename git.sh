@@ -6,6 +6,6 @@ RED = \033[0;31m
 git add .
 echo "$(GREEN)Added changes"
 git commit -a --allow-empty-message -m ''
-echo -e "Default \e[95mCommited changes"
+echo -e "\e[95mCommited changes"
 git push
-echo -e "Default \e[32mPushed"
+echo -e "\e[32mPushed"

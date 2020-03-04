@@ -19,11 +19,11 @@ void	ft_printf(char *str, void *var, ...)
 	int		i;
 	int		count;
 	char	*old_str;
-	void	*pointer;
+	void	**pointer;
 
 	old_str = str;
 	i = 0;
-	pointer = var;
+	pointer = &var;
 	count = ft_percents(str);
 	while (str[i])
 	{
@@ -31,7 +31,7 @@ void	ft_printf(char *str, void *var, ...)
 		{
 			if (str[i + 1] == 's')
 			{
-				ft_putstr((char *)pointer);
+				ft_putstr((char *)*pointer);
 				pointer++;
 			}
 			i++;

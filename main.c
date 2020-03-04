@@ -31,8 +31,8 @@ void	ft_printf(char *str, void *var, ...)
 		{
 			if (str[i + 1] == 's')
 			{
-				pointer++;
 				ft_putstr((char *)pointer);
+				pointer++;
 			}
 			i++;
 		}
@@ -48,6 +48,6 @@ int		main(void)
 	char	*str2 = "objorka";
 	ft_printf("ne_moy %s blabla %s", str, str2);
 	ft_putstr("\n");
-	printf("ne_moy %s", str);
+	printf("ne_moy %s blabla %s", str, str2);
 	return (0);
 }

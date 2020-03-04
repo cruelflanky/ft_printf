@@ -17,15 +17,39 @@ char	*ft_strncpy_mod(char *src, int i)
 	return (dest);
 }
 
+int		ft_percents(char *str)
+{
+	int i;
+	int x;
+
+	i = 0;
+	x = 0;
+	while (str[x++])
+		if (str[i] == '%')
+			i++;
+	return (i);
+}
+
 void	ft_printf(char *str, void *var, ...)
 {
 	int i;
+	int count;
 
 	i = 0;
-	while (str[i] != '%')
-		i++;
-	if (str[i + 1] == 's')
-		ft_putstr(ft_strjoin(ft_strncpy_mod(str, i), (char *)var));
+	count = ft_percents(str);
+	while (count--)
+	{
+		while (str[i] != '%' && str[i])
+			i++;
+		if (str[i] == '%')
+		{
+			if (str[i + 1] == 's')
+			{
+				str = ft_strjoin(ft_strncpy_mod(str, i), (char *)var);
+				i = 0;
+			}
+		}
+	}
 }
 
 int		main(void)

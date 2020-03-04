@@ -1,22 +1,6 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-char	*ft_strncpy_mod(char *src, int i)
-{
-	int x;
-	char *dest;
-	x = 0;
-
-	dest = (char *)ft_memalloc(sizeof(char) * i);
-	while (x < i)
-	{
-		dest[x] = src[x];
-		x++;
-	}
-	dest[x] = '\0';
-	return (dest);
-}
-
 int		ft_percents(char *str)
 {
 	int i;

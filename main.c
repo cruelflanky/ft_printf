@@ -34,7 +34,9 @@ void	ft_printf(char *str, void *var, ...)
 {
 	int i;
 	int count;
+	char *old_str;
 
+	old_str = str;
 	i = 0;
 	count = ft_percents(str);
 	while (count--)

@@ -15,13 +15,13 @@ int		ft_percents(char *str)
 	return (i);
 }
 
-void	ft_printf(char *str, void *var, ...)
+void	ft_printf(char *str, ...)
 {
 	int		i;
 	int		count;
 	va_list	args;
 
-	va_start(args, var);
+	va_start(args, str);
 	i = 0;
 	count = ft_percents(str);
 	while (str[i])
@@ -36,14 +36,16 @@ void	ft_printf(char *str, void *var, ...)
 			ft_putchar(str[i]);
 		i++;
 	}
+	va_end(args);
 }
 
 int		main(void)
 {
 	char	*str = "string";
 	char	*str2 = "objorka";
-	ft_printf("ne_moy %s blabla %s", str, str2);
+	char	*str3 = "kirill";
+	ft_printf("argument 1 = %s, argument 2 = %s, argument 3 = %s, end!", str, str2, str3);
 	ft_putstr("\n");
-	printf("ne_moy %s blabla %s", str, str2);
+	printf("argument 1 = %s, argument 2 = %s, argument 3 = %s, end!", str, str2, str3);
 	return (0);
 }

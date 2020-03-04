@@ -56,7 +56,7 @@ void	ft_printf(char *str, void *var, ...)
 int		main(void)
 {
 	char	*str = "string";
-	ft_printf("ne_moy %s", str);
+	ft_printf("ne_moy %s blabla %s", str);
 	ft_putstr("\n");
 	printf("ne_moy %s", str);
 	return (0);

@@ -25,7 +25,7 @@ int		ft_percents(char *str)
 	i = 0;
 	x = 0;
 	while (str[x++])
-		if (str[i] == '%')
+		if (str[x] == '%')
 			i++;
 	return (i);
 }
@@ -50,6 +50,7 @@ void	ft_printf(char *str, void *var, ...)
 			}
 		}
 	}
+	ft_putstr(str);
 }
 
 int		main(void)

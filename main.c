@@ -44,7 +44,10 @@ void	ft_printf(char *str, void *var, ...)
 		if (str[i] == '%')
 		{
 			if (str[i + 1] == 's')
+			{
 				ft_putstr((char *)var);
+				var++;
+			}
 			i++;
 		}
 		else
@@ -56,7 +59,8 @@ void	ft_printf(char *str, void *var, ...)
 int		main(void)
 {
 	char	*str = "string";
-	ft_printf("ne_moy %s blabla %s", str);
+	char	*str2 = "objorka";
+	ft_printf("ne_moy %s blabla %s", str, str2);
 	ft_putstr("\n");
 	printf("ne_moy %s", str);
 	return (0);

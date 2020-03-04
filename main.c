@@ -65,7 +65,7 @@ int		main(void)
 }
 
 
-//*str = "string"
+// *str = "string"
 // "ne_moy %s blablabla %s blabla"
 // 1 iteration of function
 // "ne_moy string blablabla %s blabla"

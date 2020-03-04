@@ -39,20 +39,18 @@ void	ft_printf(char *str, void *var, ...)
 	old_str = str;
 	i = 0;
 	count = ft_percents(str);
-	while (count--)
+	while (str[i])
 	{
-		while (str[i] != '%' && str[i])
-			i++;
 		if (str[i] == '%')
 		{
 			if (str[i + 1] == 's')
-			{
-				str = ft_strjoin(ft_strncpy_mod(str, i), (char *)var);
-				i = 0;
-			}
+				ft_putstr((char *)var);
+			i++;
 		}
+		else
+			ft_putchar(str[i]);
+		i++;
 	}
-	ft_putstr(str);
 }
 
 int		main(void)
@@ -63,11 +61,3 @@ int		main(void)
 	printf("ne_moy %s", str);
 	return (0);
 }
-
-
-// *str = "string"
-// "ne_moy %s blablabla %s blabla"
-// 1 iteration of function
-// "ne_moy string blablabla %s blabla"
-// 2 iteration of function
-// "ne_moy string blablabla string blabla"

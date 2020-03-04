@@ -1,5 +1,6 @@
 #include "ft_printf.h"
 #include <stdio.h>
+#include <stdarg.h>
 
 int		ft_percents(char *str)
 {
@@ -18,22 +19,17 @@ void	ft_printf(char *str, void *var, ...)
 {
 	int		i;
 	int		count;
-	char	*old_str;
-	void	**pointer;
+	va_list	args;
 
-	old_str = str;
+	va_start(args, var);
 	i = 0;
-	pointer = &var;
 	count = ft_percents(str);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
 			if (str[i + 1] == 's')
-			{
-				ft_putstr((char *)*pointer);
-				pointer++;
-			}
+				ft_putstr(va_arg(args, char *));
 			i++;
 		}
 		else

@@ -31,8 +31,8 @@ void	ft_printf(char *str, void *var, ...)
 		{
 			if (str[i + 1] == 's')
 			{
-				ft_putstr((char *)pointer);
 				pointer++;
+				ft_putstr((char *)pointer);
 			}
 			i++;
 		}

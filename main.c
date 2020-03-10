@@ -22,8 +22,10 @@ void	choose_flag(va_list *args, char *str, int i)
 		ft_putstr(va_arg(*args, char *));
 	else if (str[i + 1] == 'c')
 		ft_putchar((char)va_arg(*args, int));
-	else if (str[i + 1] == 'd')
+	else if (str[i + 1] == 'd' || str[i + 1] == 'i')
 		ft_putnbr(va_arg(*args, int));
+	else if (str[i + 1] == '%')
+		ft_putchar('%');
 }
 
 void	ft_printf(char *str, ...)
@@ -54,8 +56,8 @@ int		main(void)
 	char	*str = "string";
 	char	str2 = 'A';
 	int		str3 = 322;
-	ft_printf("string 1 = %s, symbol 2 = %c, integer 3 = %d, end!", str, str2, str3);
+	ft_printf("string 1 = %s, symbol 2 = %c, integer 3 = %d, symbol'%%' = %% end!", str, str2, str3);
 	ft_putstr("\n");
-	printf("string 1 = %s, symbol 2 = %c, integer 3 = %d, end!", str, str2, str3);
+	printf("string 1 = %s, symbol 2 = %c, integer 3 = %d, symbol'%%' = %% end!", str, str2, str3);
 	return (0);
 }

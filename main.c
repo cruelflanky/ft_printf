@@ -82,12 +82,8 @@ void	spec_x_X_u_o(va_list *args, t_printf *printf)
 void	choose_specifier(va_list *args, char *str, int i, t_printf *printf)
 {
 	if (str[i] == 's')
-	{
-		if (printf->length.l)
-			ft_putstr(va_arg(*args, wchar_t *));
-		else
-			ft_putstr(va_arg(*args, char *));
-	}
+		printf->length.l ? ft_putstr(va_arg(*args, wchar_t *))
+		: ft_putstr(va_arg(*args, char *));
 	else if (str[i] == 'c')
 		ft_putchar(va_arg(*args, int *));
 	else if (str[i] == 'p')

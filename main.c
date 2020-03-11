@@ -43,14 +43,65 @@ int		check_precisions(t_printf *printf, char *str, int i)
     return (i);
 }
 
-void	choose_flag(va_list *args, char *str, int i)
+void	spec_i_d(va_list *args, t_printf *printf)
+{
+	if (printf->length.h)
+		ft_putnbr_mod(va_arg(*args, short int));
+	else if (printf->length.hh)
+		ft_putnbr_mod(va_arg(*args, signed char));
+	else if (printf->length.l)
+		ft_putnbr_mod(va_arg(*args, long int));
+	else if (printf->length.ll)
+		ft_putnbr_mod(va_arg(*args, long long int));
+	else if (printf->length.j)
+		ft_putnbr_mod(va_arg(*args, intmax_t));
+	else if (printf->length.z)
+		ft_putnbr_mod(va_arg(*args, size_t));
+	else
+		ft_putnbr_mod(va_arg(*args, int));
+}
+
+void	spec_x_X_u_o(va_list *args, t_printf *printf)
+{
+	if (printf->length.h)
+		ft_putnbr_mod(va_arg(*args, unsigned short int));
+	else if (printf->length.hh)
+		ft_putnbr_mod(va_arg(*args, unsigned int));
+	else if (printf->length.l)
+		ft_putnbr_mod(va_arg(*args, unsigned long int));
+	else if (printf->length.ll)
+		ft_putnbr_mod(va_arg(*args, unsigned long long int));
+	else if (printf->length.j)
+		ft_putnbr_mod(va_arg(*args, uintmax_t));
+	else if (printf->length.z)
+		ft_putnbr_mod(va_arg(*args, size_t));
+	else
+		ft_putnbr_mod(va_arg(*args, unsigned int));
+}
+
+void	choose_specifier(va_list *args, char *str, int i, t_printf *printf)
 {
 	if (str[i] == 's')
-		ft_putstr(va_arg(*args, char *));
+	{
+		if (printf->length.l)
+			ft_putstr(va_arg(*args, wchar_t *));
+		else
+			ft_putstr(va_arg(*args, char *));
+	}
 	else if (str[i] == 'c')
-		ft_putchar((char)va_arg(*args, int));
+		ft_putchar(va_arg(*args, int *));
+	else if (str[i] == 'p')
+		ft_print_pointer(va_arg(*args, void *));
 	else if (str[i] == 'd' || str[i + 1] == 'i')
-		ft_putnbr(va_arg(*args, int));
+		spec_i_d(args, printf);
+	else if (str[i] == 'x' || str[i + 1] == 'X' ||
+		str[i] == 'u' || str[i + 1] == 'o')
+		spec_x_X_u_o(args, printf);
+	else if (str[i] == 'f' || str[i + 1] == 'F' ||
+		str[i] == 'e' || str[i + 1] == 'E' ||
+		str[i] == 'g' || str[i + 1] == 'G' ||
+		str[i] == 'a' || str[i + 1] == 'A')
+		spec_fFeEgGaA(args, printf);
 	else if (str[i] == '%')
 		ft_putchar('%');
 }

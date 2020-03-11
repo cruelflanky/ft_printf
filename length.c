@@ -6,7 +6,7 @@
 /*   By: gaudry <gaudry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:36:08 by gaudry            #+#    #+#             */
-/*   Updated: 2020/03/11 17:19:53 by gaudry           ###   ########.fr       */
+/*   Updated: 2020/03/11 19:05:48 by gaudry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    init_length(t_length *length)
     length->L = 0;
 }
 
-void    check_length(va_list *args, char *str, int i, t_length *length)
+void    check_length(char *str, int i, t_length *length)
 {
     if (str[i + 1] == 'h')
     {

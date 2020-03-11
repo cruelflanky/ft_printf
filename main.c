@@ -106,11 +106,22 @@ void	choose_specifier(va_list *args, char *str, int i, t_printf *printf)
 		ft_putchar('%');
 }
 
+void	init_printf(t_printf *printf)
+{
+	init_length(printf->length);
+	init_flags(printf->flags);
+	printf->width = 0;
+	printf->dot = 0;
+	printf->precision = 0;
+}
+
 void	ft_printf(char *str, ...)
 {
 	int		i;
 	va_list	args;
+	t_printf *printf;
 
+	init_printf(printf);
 	va_start(args, str);
 	i = 0;
 	while (str[i])
@@ -118,6 +129,7 @@ void	ft_printf(char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
+			check_flags(str, i, printf);
 			choose_flag(&args, str, i);
 		}
 		else

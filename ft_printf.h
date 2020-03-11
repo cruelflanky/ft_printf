@@ -1,6 +1,9 @@
 #ifndef FT_PRINT_F_H
 # define FT_PRINT_F_H
 # include "libft/libft.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <stdarg.h>
 
 typedef struct  s_flags
 {

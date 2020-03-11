@@ -6,11 +6,10 @@
 /*   By: gaudry <gaudry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:36:08 by gaudry            #+#    #+#             */
-/*   Updated: 2020/03/11 16:55:24 by gaudry           ###   ########.fr       */
+/*   Updated: 2020/03/11 17:19:53 by gaudry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
 #include "ft_printf.h"
 
 void    init_length(t_length *length)

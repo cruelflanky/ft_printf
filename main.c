@@ -1,7 +1,5 @@
 #include "ft_printf.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
+
 
 // void	ft_putnbr_double(double n)
 // {
@@ -29,7 +27,10 @@ int		check_width(t_printf *printf, char *str, int i)
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
 	if (str[i] == '.')
+	{
 		printf->dot = 0;
+		i++;
+	}
 	return (i);
 }
 

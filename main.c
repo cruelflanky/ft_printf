@@ -20,7 +20,20 @@
 // 	}
 // }
 
-int    check_precisions(t_printf *printf, char *str, int i)
+int		check_width(t_printf *printf, char *str, int i)
+{
+	if (str[i] >= '0' && str[i] <= '9')
+		printf->width = ft_atoi(str[i]);
+	else
+		return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+		i++;
+	if (str[i] == '.')
+		printf->dot = 0;
+	return (i);
+}
+
+int		check_precisions(t_printf *printf, char *str, int i)
 {
     if (printf->dot)
         printf->precision = ft_atoi(str[i]);
@@ -31,13 +44,13 @@ int    check_precisions(t_printf *printf, char *str, int i)
 
 void	choose_flag(va_list *args, char *str, int i)
 {
-	if (str[i + 1] == 's')
+	if (str[i] == 's')
 		ft_putstr(va_arg(*args, char *));
-	else if (str[i + 1] == 'c')
+	else if (str[i] == 'c')
 		ft_putchar((char)va_arg(*args, int));
-	else if (str[i + 1] == 'd' || str[i + 1] == 'i')
+	else if (str[i] == 'd' || str[i + 1] == 'i')
 		ft_putnbr(va_arg(*args, int));
-	else if (str[i + 1] == '%')
+	else if (str[i] == '%')
 		ft_putchar('%');
 }
 
@@ -52,8 +65,8 @@ void	ft_printf(char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			choose_flag(&args, str, i);
 			i++;
+			choose_flag(&args, str, i);
 		}
 		else
 			ft_putchar(str[i]);

@@ -3,17 +3,30 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-int		ft_percents(char *str)
-{
-	int i;
-	int x;
+// void	ft_putnbr_double(double n)
+// {
+// 	if (n == -2147483648)
+// 		ft_putstr("-2147483648");
+// 	else
+// 	{
+// 		if (n < 0)
+// 		{
+// 			ft_putchar('-');
+// 			n *= -1;
+// 		}
+// 		if (n >= 10)
+// 			ft_putnbr(n / 10);
+// 		ft_putchar((n % 10) + 48);
+// 	}
+// }
 
-	i = 0;
-	x = 0;
-	while (str[x++])
-		if (str[x] == '%')
-			i++;
-	return (i);
+int    check_precisions(t_printf *printf, char *str, int i)
+{
+    if (printf->dot)
+        printf->precision = ft_atoi(str[i]);
+    while (str[i] >= '0' && str[i] <= '9')
+        i++;
+    return (i);
 }
 
 void	choose_flag(va_list *args, char *str, int i)
@@ -31,12 +44,10 @@ void	choose_flag(va_list *args, char *str, int i)
 void	ft_printf(char *str, ...)
 {
 	int		i;
-	int		count;
 	va_list	args;
 
 	va_start(args, str);
 	i = 0;
-	count = ft_percents(str);
 	while (str[i])
 	{
 		if (str[i] == '%')
@@ -55,9 +66,9 @@ int		main(void)
 {
 	char	*str = "string";
 	char	str2 = 'A';
-	int		str3 = 322;
+	double	str3 = 322.42424564654;
 	ft_printf("string 1 = %s, symbol 2 = %c, integer 3 = %d, symbol'%%' = %% end!", str, str2, str3);
 	ft_putstr("\n");
-	printf("string 1 = %s, symbol 2 = %c, integer 3 = %d, symbol'%%' = %% end!", str, str2, str3);
+	printf("string 1 = %s, symbol 2 = %c, integer 3 = %1hf, symbol'%%' = %% end!", str, str2, str3);
 	return (0);
 }

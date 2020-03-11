@@ -21,7 +21,7 @@
 int		check_width(t_printf *printf, char *str, int i)
 {
 	if (str[i] >= '0' && str[i] <= '9')
-		printf->width = ft_atoi(str[i]);
+		printf->width = ft_atoi(&str[i]);
 	else
 		return (0);
 	while (str[i] >= '0' && str[i] <= '9')
@@ -37,7 +37,7 @@ int		check_width(t_printf *printf, char *str, int i)
 int		check_precisions(t_printf *printf, char *str, int i)
 {
     if (printf->dot)
-        printf->precision = ft_atoi(str[i]);
+        printf->precision = ft_atoi(&str[i]);
     while (str[i] >= '0' && str[i] <= '9')
         i++;
     return (i);
@@ -80,9 +80,9 @@ int		main(void)
 {
 	char	*str = "string";
 	char	str2 = 'A';
-	double	str3 = 322.42424564654;
-	ft_printf("string 1 = %s, symbol 2 = %c, integer 3 = %d, symbol'%%' = %% end!", str, str2, str3);
-	ft_putstr("\n");
-	printf("string 1 = %s, symbol 2 = %c, integer 3 = %1hf, symbol'%%' = %% end!", str, str2, str3);
+	short	str3 = 12345;
+	//ft_printf("string 1 = %s, symbol 2 = %c, integer 3 = %d, symbol'%%' = %% end!", str, str2, str3);
+	//ft_putstr("\n");
+	printf("string 1 = %s, symbol 2 = %c, integer 3 = %hhi, symbol'%%' = %% end!", str, str2, str3);
 	return (0);
 }
